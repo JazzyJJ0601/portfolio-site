@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths + AI Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Maths + AI Projects</h1>
+      <p>Prototype repos under active development</p>
+    </header>
+
+    <div class="repo-grid">
+      <div class="repo-card">
+        <h3>conformal-drift</h3>
+        <p>Adaptive Conformal Inference (ACI) for distribution shift detection and uncertainty quantification.</p>
+        <a href="https://github.com/JazzyJJ0601/conformal-drift" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>t-digest</h3>
+        <p>Streaming quantile estimation using the t-digest algorithm for real-time analytics.</p>
+        <a href="https://github.com/JazzyJJ0601/t-digest" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>tinygrad-gpt</h3>
+        <p>Minimal GPT implementation built with tinygrad for educational transformer research.</p>
+        <a href="https://github.com/JazzyJJ0601/tinygrad-gpt" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>precision-escalation</h3>
+        <p>Layer-wise precision escalation using 2-bit base + residual bit-planes for consumer GPUs.</p>
+        <a href="https://github.com/JazzyJJ0601/precision-escalation" target="_blank">View on GitHub</a>
+        <div class="benchmarks">2-bit reconstruction error: ~36% on real weights</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>block-quant</h3>
+        <p>Learnable block-wise quantization with straight-through estimator for per-block scale optimization.</p>
+        <a href="https://github.com/JazzyJJ0601/block-quant" target="_blank">View on GitHub</a>
+        <div class="benchmarks">2-bit learned error: 0.445 vs static 0.723</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>activation-aware-quant</h3>
+        <p>Activation-aware mixed-precision quantization that assigns bit-widths based on layer sensitivity.</p>
+        <a href="https://github.com/JazzyJJ0601/activation-aware-quant" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>multi-level-quant</h3>
+        <p>Multi-level quantization for neural network tensors with per-tensor bit-widths based on sensitivity.</p>
+        <a href="https://github.com/JazzyJJ0601/multi-level-quant" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>adaptive-kv-cache</h3>
+        <p>Adaptive bit-width KV cache quantization for long-context LLM inference.</p>
+        <a href="https://github.com/JazzyJJ0601/adaptive-kv-cache" target="_blank">View on GitHub</a>
+        <div class="benchmarks">INT4 KV cache: 6.8GB vs FP16 baseline 18.5GB</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>prompt-compress</h3>
+        <p>Dynamic prompt compression via information-theoretic token importance scoring.</p>
+        <a href="https://github.com/JazzyJJ0601/prompt-compress" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>attention-offload</h3>
+        <p>Selective attention score computation offloading from GPU to CPU for long-context inference.</p>
+        <a href="https://github.com/JazzyJJ0601/attention-offload" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>streaming-attention</h3>
+        <p>Pure NumPy implementation of streaming/ring attention for infinite context windows.</p>
+        <a href="https://github.com/JazzyJJ0601/streaming-attention" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>predictive-swap</h3>
+        <p>Novel attention mechanism that intercepts KV cache entries for predictive swapping.</p>
+        <a href="https://github.com/JazzyJJ0601/predictive-swap" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>speculative-decoding</h3>
+        <p>Speculative decoding with draft model proposals and target model verification.</p>
+        <a href="https://github.com/JazzyJJ0601/speculative-decoding" target="_blank">View on GitHub</a>
+        <div class="benchmarks">40-60% acceptance rate on synthetic data</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>multi-tower-moe</h3>
+        <p>Multi-tower mixture of experts with dynamic routing and load balancing.</p>
+        <a href="https://github.com/JazzyJJ0601/multi-tower-moe" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Real results: in progress</div>
+      </div>
+
+      <div class="repo-card">
+        <h3>edtd</h3>
+        <p>Entropy-driven token dropping for memory-efficient transformer inference on long sequences.</p>
+        <a href="https://github.com/JazzyJJ0601/edtd" target="_blank">View on GitHub</a>
+        <div class="benchmarks">Expected: 30-50% KV cache reduction</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
