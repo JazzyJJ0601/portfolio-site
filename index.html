@@ -1,124 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maths + AI Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>Maths + AI Projects</h1>
-      <p>Prototype repos under active development</p>
-    </header>
-
-    <div class="repo-grid">
-      <div class="repo-card">
-        <h3>conformal-drift</h3>
-        <p>Adaptive Conformal Inference (ACI) for distribution shift detection and uncertainty quantification.</p>
-        <a href="https://github.com/JazzyJJ0601/conformal-drift" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>t-digest</h3>
-        <p>Streaming quantile estimation using the t-digest algorithm for real-time analytics.</p>
-        <a href="https://github.com/JazzyJJ0601/t-digest" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>tinygrad-gpt</h3>
-        <p>Minimal GPT implementation built with tinygrad for educational transformer research.</p>
-        <a href="https://github.com/JazzyJJ0601/tinygrad-gpt" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>precision-escalation</h3>
-        <p>Layer-wise precision escalation using 2-bit base + residual bit-planes for consumer GPUs.</p>
-        <a href="https://github.com/JazzyJJ0601/precision-escalation" target="_blank">View on GitHub</a>
-        <div class="benchmarks">2-bit reconstruction error: ~36% on real weights</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>block-quant</h3>
-        <p>Learnable block-wise quantization with straight-through estimator for per-block scale optimization.</p>
-        <a href="https://github.com/JazzyJJ0601/block-quant" target="_blank">View on GitHub</a>
-        <div class="benchmarks">2-bit learned error: 0.445 vs static 0.723</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>activation-aware-quant</h3>
-        <p>Activation-aware mixed-precision quantization that assigns bit-widths based on layer sensitivity.</p>
-        <a href="https://github.com/JazzyJJ0601/activation-aware-quant" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>multi-level-quant</h3>
-        <p>Multi-level quantization for neural network tensors with per-tensor bit-widths based on sensitivity.</p>
-        <a href="https://github.com/JazzyJJ0601/multi-level-quant" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>adaptive-kv-cache</h3>
-        <p>Adaptive bit-width KV cache quantization for long-context LLM inference.</p>
-        <a href="https://github.com/JazzyJJ0601/adaptive-kv-cache" target="_blank">View on GitHub</a>
-        <div class="benchmarks">INT4 KV cache: 6.8GB vs FP16 baseline 18.5GB</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>prompt-compress</h3>
-        <p>Dynamic prompt compression via information-theoretic token importance scoring.</p>
-        <a href="https://github.com/JazzyJJ0601/prompt-compress" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>attention-offload</h3>
-        <p>Selective attention score computation offloading from GPU to CPU for long-context inference.</p>
-        <a href="https://github.com/JazzyJJ0601/attention-offload" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>streaming-attention</h3>
-        <p>Pure NumPy implementation of streaming/ring attention for infinite context windows.</p>
-        <a href="https://github.com/JazzyJJ0601/streaming-attention" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>predictive-swap</h3>
-        <p>Novel attention mechanism that intercepts KV cache entries for predictive swapping.</p>
-        <a href="https://github.com/JazzyJJ0601/predictive-swap" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>speculative-decoding</h3>
-        <p>Speculative decoding with draft model proposals and target model verification.</p>
-        <a href="https://github.com/JazzyJJ0601/speculative-decoding" target="_blank">View on GitHub</a>
-        <div class="benchmarks">40-60% acceptance rate on synthetic data</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>multi-tower-moe</h3>
-        <p>Multi-tower mixture of experts with dynamic routing and load balancing.</p>
-        <a href="https://github.com/JazzyJJ0601/multi-tower-moe" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Real results: in progress</div>
-      </div>
-
-      <div class="repo-card">
-        <h3>edtd</h3>
-        <p>Entropy-driven token dropping for memory-efficient transformer inference on long sequences.</p>
-        <a href="https://github.com/JazzyJJ0601/edtd" target="_blank">View on GitHub</a>
-        <div class="benchmarks">Expected: 30-50% KV cache reduction</div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jasper Jensen — I make big AI models small and fast</title>
+<meta name="description" content="Jasper Jensen builds new ways to shrink, offload and speed up AI models. 16 open-source projects. Open to work.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#05060a;--fg:#eef0f7;--dim:#8b90a5;--a:#7c5cff;--b:#22d3ee;--c:#ff5ca8}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+canvas#bg{position:fixed;inset:0;z-index:0}
+main{position:relative;z-index:1}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 7vw;position:relative}
+.g{background:linear-gradient(100deg,var(--a),var(--b) 50%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:200% center}}
+h1{font-size:clamp(2.6rem,9vw,8rem);line-height:1;letter-spacing:-.04em;font-weight:800}
+h2{font-size:clamp(2rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.03em;font-weight:800;max-width:16ch}
+p.lead{font-size:clamp(1.05rem,2vw,1.5rem);color:var(--dim);max-width:34em;margin-top:1.5rem}
+.badge{display:inline-flex;gap:.6rem;align-items:center;border:1px solid #ffffff22;border-radius:99px;padding:.4rem 1rem;font-size:.85rem;color:var(--dim);width:fit-content;margin-bottom:1.6rem;backdrop-filter:blur(8px)}
+.badge i{width:8px;height:8px;border-radius:50%;background:#3dff9a;box-shadow:0 0 12px #3dff9a;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.3}}
+.btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem}
+.btn{padding:.95rem 1.8rem;border-radius:99px;font-weight:600;text-decoration:none;color:#fff;border:1px solid #ffffff33;transition:.25s;backdrop-filter:blur(8px)}
+.btn.p{background:linear-gradient(100deg,var(--a),var(--b));border:0;color:#04050a}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 40px #7c5cff55}
+.hint{position:absolute;bottom:4vh;left:7vw;color:var(--dim);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;animation:b 2s infinite}
+@keyframes b{50%{transform:translateY(8px)}}
+.rv{opacity:0;transform:translateY(50px);transition:opacity .9s,transform .9s}.rv.in{opacity:1;transform:none}
+/* shrink demo */
+.model{margin-top:3rem;max-width:900px}
+.row{display:flex;align-items:center;gap:1rem;margin:1rem 0;font-size:.85rem;color:var(--dim)}
+.row b{width:9rem;flex:none;font-weight:500}
+.bar{height:34px;border-radius:8px;background:linear-gradient(90deg,var(--a),var(--b));width:100%;transition:width 2.2s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 30px #7c5cff55}
+.bar.k{background:linear-gradient(90deg,var(--b),var(--c))}
+.model.go .s1{width:50%}.model.go .s2{width:25%}.model.go .s3{width:12%}
+.note{font-size:.75rem;color:#5d6278;margin-top:1rem}
+/* skills */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:3rem}
+.cap{border:1px solid #ffffff18;border-radius:20px;padding:1.8rem;background:#ffffff08;backdrop-filter:blur(10px)}
+.cap h3{font-size:1.3rem;margin-bottom:.6rem}.cap p{color:var(--dim)}
+/* projects */
+#work{padding-left:0;padding-right:0}
+#work .hd{padding:0 7vw}
+.track{display:flex;gap:1.4rem;overflow-x:auto;padding:3rem 7vw 2rem;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
+.track::-webkit-scrollbar{display:none}
+.card{flex:none;width:min(80vw,380px);min-height:340px;scroll-snap-align:center;border-radius:24px;padding:1.8rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;background:#0d0f18;border:1px solid #ffffff18;transition:transform .3s,border-color .3s}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--x,50%) var(--y,0%),#7c5cff44,transparent 60%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-8px);border-color:#7c5cff88}.card:hover:before{opacity:1}
+.card>*{position:relative}
+.tags{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--b)}
+.card h3{font-size:1.6rem;line-height:1.15;margin:.9rem 0}
+.card p{color:var(--dim);font-size:.95rem;flex:1}
+.card code{font-size:.85rem;color:var(--fg);margin-top:1.2rem;display:block;opacity:.7}
+.n{position:absolute!important;right:1.2rem;top:.6rem;font-size:5rem;font-weight:800;color:#ffffff08}
+.prog{height:3px;background:#ffffff14;margin:0 7vw;border-radius:9px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--c));border-radius:9px}
+/* contact */
+#contact{align-items:center;text-align:center}
+#contact h2{max-width:14ch;font-size:clamp(2.4rem,8vw,6.5rem)}
+#contact .btns{justify-content:center}
+.mail{font-size:clamp(1.1rem,3vw,2rem);margin-top:2rem;color:var(--fg);text-decoration:none;border-bottom:2px solid var(--a)}
+footer{padding:2rem;text-align:center;color:#5d6278;font-size:.8rem;position:relative;z-index:1}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));z-index:9}
+nav{position:fixed;top:0;right:0;padding:1.2rem 5vw;z-index:8;display:flex;gap:1.4rem;font-size:.85rem}
+nav a{color:var(--dim);text-decoration:none;transition:.2s}nav a:hover{color:#fff}
+@media(max-width:600px){nav a:not(:last-child){display:none}.row b{width:5.5rem}}
+</style></head><body>
+<div id="bar"></div><canvas id="bg"></canvas>
+<nav><a href="#shrink">The idea</a><a href="#can">What I do</a><a href="#work">Work</a><a href="#contact">Hire me</a></nav>
+<main>
+<section id="top">
+<span class="badge"><i></i>Open to work</span>
+<h1>Hi, I'm<br><span class="g">Jasper Jensen.</span></h1>
+<p class="lead">I make big AI models smaller, faster and cheaper to run. Sixteen open-source experiments say I mean it.</p>
+<div class="btns"><a class="btn p" href="#contact">Hire me</a><a class="btn" href="#work">See the work</a></div>
+<div class="hint">Scroll ↓</div>
+</section>
+<section id="shrink">
+<h2 class="rv">Big models need <span class="g">big hardware.</span></h2>
+<p class="lead rv">Most people can't run the best models. A model's weights and memory decide what machine it needs. I work on that problem: same model, far less to carry.</p>
+<div class="model rv" id="model">
+<div class="row"><b>Full precision</b><div class="bar"></div></div>
+<div class="row"><b>Half the bits</b><div class="bar s1"></div></div>
+<div class="row"><b>A quarter</b><div class="bar s2 k"></div></div>
+<div class="row"><b>Streamed on demand</b><div class="bar s3 k"></div></div>
+<p class="note">Illustration of the idea, not a benchmark. Real measurements live in each repo.</p>
+</div>
+</section>
+<section id="can">
+<h2 class="rv">What I can <span class="g">do for you.</span></h2>
+<div class="caps">
+<div class="cap rv"><h3>Fit models into less memory</h3><p>Quantization, compression and offloading so large models run on the hardware you already own.</p></div>
+<div class="cap rv"><h3>Make inference faster</h3><p>Speculative decoding, smarter caching and attention tricks that cut the wait per token.</p></div>
+<div class="cap rv"><h3>Prove it with numbers</h3><p>Every idea gets tested on real models and written up honestly, including what didn't work.</p></div>
+<div class="cap rv"><h3>Ship it</h3><p>Code you can clone and run today, in public, with a clear readme.</p></div>
+</div>
+</section>
+<section id="work">
+<div class="hd"><h2 class="rv"><span class="g">16</span> things I've built.</h2><p class="lead rv">Drag or swipe. Click any card to open the code.</p></div>
+<div class="track" id="track"></div>
+<div class="prog"><i id="prog"></i></div>
+</section>
+<section id="contact">
+<span class="badge"><i></i>Open to work</span>
+<h2 class="rv">Got a hard AI problem? <span class="g">Let's talk.</span></h2>
+<a class="mail rv" href="mailto:jasperjensen8888@gmail.com">jasperjensen8888@gmail.com</a>
+<div class="btns rv"><a class="btn p" href="mailto:jasperjensen8888@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/jasper-jensen-3709182b4/" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/JazzyJJ0601" target="_blank" rel="noopener">GitHub</a></div>
+</section>
+</main>
+<footer>© Jasper Jensen</footer>
+<script>
+const C=[{"url": "https://github.com/JazzyJJ0601/precision-escalation", "tags": "Quantization \u00b7 Offloading", "title": "Run big models on small GPUs", "desc": "Keeps a 2-bit base model in VRAM and streams residual bit-planes from NVMe/RAM, fetching extra precision only for tokens an entropy gate flags as hard.", "repo": "precision-escalation"}, {"url": "https://github.com/JazzyJJ0601/attention-offload", "tags": "Inference \u00b7 Memory", "title": "Long context on consumer hardware", "desc": "Moves attention-score computation to the CPU so 32K-token contexts fit on a GPU where the score matrix alone would not.", "repo": "attention-offload"}, {"url": "https://github.com/JazzyJJ0601/adaptive-kv-cache", "tags": "KV cache \u00b7 LLMs", "title": "Shrink the KV cache on the fly", "desc": "Scores heads by entropy and adjusts compression online during generation, targeting 2\u20134\u00d7 less cache memory.", "repo": "adaptive-kv-cache"}, {"url": "https://github.com/JazzyJJ0601/block-quant", "tags": "Quantization \u00b7 Optimisation", "title": "Learnable quantization scales", "desc": "Treats block scale factors as trainable, refining them with a straight-through estimator instead of fixing them from min/max statistics.", "repo": "block-quant"}, {"url": "https://github.com/JazzyJJ0601/activation-aware-quant", "tags": "Quantization \u00b7 Calibration", "title": "Bit-widths by sensitivity", "desc": "Uses activation statistics to give sensitive layers 4 bits and tolerant ones 2, cutting size with a calibration pass.", "repo": "activation-aware-quant"}, {"url": "https://github.com/JazzyJJ0601/multi-level-quant", "tags": "Quantization \u00b7 Compression", "title": "Coarse block + fine residual", "desc": "Per-tensor bit-widths chosen by sensitivity analysis, with residual refinement layered on top.", "repo": "multi-level-quant"}, {"url": "https://github.com/JazzyJJ0601/prompt-compress", "tags": "Information theory \u00b7 Prompts", "title": "Shorter prompts, same meaning", "desc": "Drops low-information tokens using entropy, surprisal and adjacent mutual information from the model's own logits. No training needed.", "repo": "prompt-compress"}, {"url": "https://github.com/JazzyJJ0601/speculative-decoding", "tags": "Inference speed", "title": "Faster generation", "desc": "A draft model proposes tokens and the target model verifies them with rejection sampling, built from scratch.", "repo": "speculative-decoding"}, {"url": "https://github.com/JazzyJJ0601/streaming-attention", "tags": "Attention \u00b7 Long context", "title": "Unbounded context", "desc": "Ring-buffer KV cache, sliding-window attention and ALiBi in pure NumPy.", "repo": "streaming-attention"}, {"url": "https://github.com/JazzyJJ0601/edtd", "tags": "Pruning \u00b7 Transformers", "title": "Entropy-driven token dropping", "desc": "Prunes low-importance tokens using attention entropy and a dynamic per-sequence threshold.", "repo": "edtd"}, {"url": "https://github.com/JazzyJJ0601/predictive-swap", "tags": "Systems \u00b7 Transformers", "title": "Predictive KV swapping", "desc": "Intercepts KV entries between decoder layers and swaps them predictively to reuse computation.", "repo": "predictive-swap"}, {"url": "https://github.com/JazzyJJ0601/multi-tower-moe", "tags": "Architecture \u00b7 MoE", "title": "Mixture of experts", "desc": "Sparse MoE with multi-tower experts, load-balanced routing and real-model perplexity evaluation.", "repo": "multi-tower-moe"}, {"url": "https://github.com/JazzyJJ0601/conformal-drift", "tags": "Statistics \u00b7 Reliability", "title": "Know when the data shifts", "desc": "Adaptive Conformal Inference for uncertainty quantification and drift detection under distribution shift.", "repo": "conformal-drift"}, {"url": "https://github.com/JazzyJJ0601/t-digest", "tags": "Maths \u00b7 Neural nets", "title": "Adaptive Fourier features", "desc": "Learns which sinusoidal frequencies matter for a regression task, beating spectral bias in plain MLPs.", "repo": "t-digest"}, {"url": "https://github.com/JazzyJJ0601/dataset-distillation", "tags": "Data efficiency", "title": "100 images instead of 50,000", "desc": "Gradient-matching distillation that compresses CIFAR-10 into a tiny synthetic set that still trains a classifier.", "repo": "dataset-distillation"}, {"url": "https://github.com/JazzyJJ0601/tinygrad-gpt", "tags": "Deep learning \u00b7 Fundamentals", "title": "A GPT from first principles", "desc": "A decoder-only transformer written in tinygrad to understand every moving part.", "repo": "tinygrad-gpt"}];
+const t=document.getElementById('track');
+t.innerHTML=C.map((c,i)=>`<a class="card" href="${c.url}" target="_blank" rel="noopener"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="tags">${c.tags}</span><h3>${c.title}</h3><p>${c.desc}</p><code>${c.repo} →</code></a>`).join('');
+t.addEventListener('mousemove',e=>{const k=e.target.closest('.card');if(k){const r=k.getBoundingClientRect();k.style.setProperty('--x',e.clientX-r.left+'px');k.style.setProperty('--y',e.clientY-r.top+'px')}});
+let d=0,sx=0,sl=0;t.addEventListener('mousedown',e=>{d=1;sx=e.pageX;sl=t.scrollLeft});addEventListener('mouseup',()=>d=0);t.addEventListener('mousemove',e=>{if(d){t.scrollLeft=sl-(e.pageX-sx)}});
+t.addEventListener('scroll',()=>{document.getElementById('prog').style.width=100*t.scrollLeft/(t.scrollWidth-t.clientWidth)+'%'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.id=='model')setTimeout(()=>e.target.classList.add('go'),400)}}),{threshold:.25});
+document.querySelectorAll('.rv').forEach(x=>io.observe(x));
+const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{bar.style.width=100*scrollY/(document.body.scrollHeight-innerHeight)+'%'});
+/* particle field: reacts to mouse and scroll */
+const cv=document.getElementById('bg'),x=cv.getContext('2d');let W,H,P=[],m={x:-999,y:-999};
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(140,W/9)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
+rs();addEventListener('resize',rs);addEventListener('mousemove',e=>{m.x=e.clientX;m.y=e.clientY});
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function f(){x.clearRect(0,0,W,H);const h=(scrollY/8)%360;
+for(const p of P){p.x+=p.vx;p.y+=p.vy+.05;if(p.x<0||p.x>W)p.vx*=-1;if(p.y>H)p.y=0;if(p.y<0)p.y=H;
+const dx=p.x-m.x,dy=p.y-m.y,q=dx*dx+dy*dy;if(q<22500){p.x+=dx/40;p.y+=dy/40}
+x.fillStyle=`hsla(${240+h%120},90%,70%,.8)`;x.fillRect(p.x,p.y,2,2)}
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],dx=a.x-b.x,dy=a.y-b.y,q=dx*dx+dy*dy;if(q<11000){x.strokeStyle=`hsla(${250+h%100},90%,65%,${.18*(1-q/11000)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+if(!rm)requestAnimationFrame(f)}
+f();
+</script></body></html>
