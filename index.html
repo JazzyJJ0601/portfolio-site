@@ -241,6 +241,17 @@ tn:"Perplexity, 16 WikiText-2 documents of 4,096 tokens, Qwen3-8B. Lower is bett
 lim:["A negative result: it came within 0.2–1% but never won, on either budget, on train or test.","One model, one dataset."],
 plain:"No. Averages of old text are too blurry to help; the model gets almost everything it needs from the first few tokens and the most recent ones. Keeping specific old tokens works instead, which is what predictive-swap does."},
 
+{repo:"kv-svd-compress",tags:"KV cache · Compression",title:"Is the KV cache low-rank? Not usefully.",
+desc:"Truncated SVD on each head's keys and values, with the rank picked by an error bound, tested against plain integer quantisation at the same size.",
+m:"Negative result on Qwen3-8B: at 2.0x smaller SVD is 43.3 ppl, int8 at 1.97x is 11.7 (baseline 11.71).",
+what:"Does the model's memory of earlier text (its KV cache) squash into a few directions, so most of it could be thrown away? Tested by compressing it with an SVD and measuring how much worse the model gets.",
+how:"Each layer and head's 256 x 128 block of keys or values is replaced by two low-rank factors when that is smaller, with the rank set so the relative error stays under a limit (eps). The model then reads the next 256 tokens from the compressed cache. The comparison is per-token integer quantisation of the same cache, with one fp16 scale per row.",
+th:["Method","Size reduction","Perplexity"],
+tr:[["Uncompressed","1.00×","11.71"],["SVD, eps 0.10","1.06×","12.17"],["SVD, eps 0.20","1.37×","18.10"],["SVD, eps 0.30","2.01×","43.26"],["int8","1.97×","11.71"],["int4","3.88×","11.98"],["int2","7.53×","24.61"]],me:[3],
+tn:"Perplexity on WikiText-2 test, 32 chunks of 512 tokens, Qwen3-8B. Lower is better.",
+lim:["A negative result: SVD saves almost nothing until it is already damaging the model.","One model, one dataset, a 256-token prefix; longer contexts were not tested.","Size is counted from the stored tensors; no speed was measured."],
+plain:"The idea was that the model's short-term memory is mostly redundant. In practice each head is too small for that to pay off: you can't drop much before answers get worse, while simply storing the same numbers with fewer bits halves the size for free."},
+
 {repo:"entropy-driven-token-dropping",tags:"KV cache · Eviction",title:"Which tokens to keep",
 desc:"When the KV cache must shrink, keep the tokens that focused queries looked at. Diffuse attention counts little and sharp retrieval counts a lot.",
 m:"Qwen3-8B, 200 held-out passages, quarter of the cache kept: 11.33 ppl vs 11.70 for H2O (full cache 9.35).",
