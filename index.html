@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jasper Jensen — I make big AI models small and fast</title>
-<meta name="description" content="Jasper Jensen builds new ways to shrink, offload and speed up AI models. 16 open-source projects. Open to work.">
+<meta name="description" content="Jasper Jensen builds new ways to shrink, offload and speed up AI models. Open-source experiments measured on real models. Open to work.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#05060a;--fg:#eef0f7;--dim:#8b90a5;--a:#7c5cff;--b:#22d3ee;--c:#ff5ca8}
@@ -64,6 +64,36 @@ nav{position:fixed;top:0;right:0;padding:1.2rem 5vw;z-index:8;display:flex;gap:1
 nav a{color:var(--dim);text-decoration:none;transition:.2s}nav a:hover{color:#fff}
 @media(max-width:600px){nav a:not(:last-child){display:none}.row b{width:5.5rem}}
 .track.drag{scroll-snap-type:none;cursor:grabbing}.track *{-webkit-user-drag:none}
+.card{font:inherit;text-align:left;cursor:pointer}
+.card:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.card .more{margin-top:1.2rem;font-size:.85rem;color:var(--fg);opacity:.75;display:flex;justify-content:space-between;align-items:center}
+.card .more b{font-size:1.3rem;font-weight:400;line-height:1;transition:transform .3s}.card:hover .more b{transform:rotate(90deg)}
+html.lock{overflow:hidden}
+dialog#d{border:1px solid #ffffff22;border-radius:24px;background:#0b0d16;color:var(--fg);width:min(780px,92vw);max-width:none;max-height:88vh;padding:0;margin:auto;overflow:hidden;box-shadow:0 30px 120px #7c5cff33}
+dialog#d[open]{display:flex;flex-direction:column;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}
+dialog#d::backdrop{background:#05060acc;backdrop-filter:blur(6px)}
+.dl{overflow:auto;padding:2.2rem 2.4rem 2.6rem;overscroll-behavior:contain}
+.dl h3{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.15;letter-spacing:-.02em;margin:.6rem 3rem 1.4rem 0}
+.dl h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600;margin:1.8rem 0 .5rem}
+.dl p,.dl li{color:#d4d7e3;max-width:62ch}
+.dl ul{padding-left:1.1rem}.dl li{margin:.3rem 0}
+.x{position:absolute;top:1rem;right:1rem;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff22;background:#ffffff0d;color:var(--fg);font-size:1.6rem;line-height:1;cursor:pointer;transition:.2s}
+.x:hover,.x:focus-visible{background:#7c5cff44;outline:none;border-color:#7c5cff}
+.tw{overflow-x:auto;border:1px solid #ffffff14;border-radius:14px;margin-top:.4rem}
+.tw:focus-visible{outline:2px solid var(--b)}
+.tw table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+.tw th,.tw td{padding:.6rem .8rem;text-align:right;border-bottom:1px solid #ffffff10;white-space:nowrap}
+.tw th[scope=row],.tw th:first-child{text-align:left;white-space:normal;min-width:9rem;font-weight:500;color:#d4d7e3}
+.tw thead th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600;white-space:normal}
+.tw tr:last-child>*{border-bottom:0}
+.tw tr.me>*{background:#7c5cff1f;color:#fff;font-weight:700}
+.tn{font-size:.8rem;color:var(--dim)!important;margin-top:.6rem}
+.plain{margin-top:2rem;padding:1.3rem 1.5rem;border-radius:16px;background:linear-gradient(120deg,#7c5cff1c,#22d3ee12);border:1px solid #7c5cff33}
+.plain h4{margin-top:0;color:var(--b)}.plain p{color:var(--fg);font-size:1.02rem}
+.gh{display:inline-block;margin-top:2rem}
+@media(max-width:600px){dialog#d{width:100vw;height:100dvh;max-height:100dvh;border-radius:0;border:0}.dl{padding:4.2rem 1.3rem 2.4rem}.dl h3{margin-right:0}}
+@media(prefers-reduced-motion:reduce){dialog#d[open]{animation:none}.card,.card .more b{transition:none}}
 </style></head><body>
 <div id="bar"></div><canvas id="bg"></canvas>
 <nav><a href="#shrink">The idea</a><a href="#can">What I do</a><a href="#work">Work</a><a href="#contact">Hire me</a></nav>
@@ -71,7 +101,7 @@ nav a{color:var(--dim);text-decoration:none;transition:.2s}nav a:hover{color:#ff
 <section id="top">
 <span class="badge"><i></i>Open to work</span>
 <h1>Hi, I'm<br><span class="g">Jasper Jensen.</span></h1>
-<p class="lead">I make big AI models smaller, faster and cheaper to run. 15 open-source experiments, measured on real models, including the ones that failed.</p>
+<p class="lead">I make big AI models smaller, faster and cheaper to run. <span class="cnt">16</span> open-source experiments, measured on real models, including the ones that failed.</p>
 <div class="btns"><a class="btn p" href="#contact">Hire me</a><a class="btn" href="#work">See the work</a></div>
 <div class="hint">Scroll ↓</div>
 </section>
@@ -96,7 +126,7 @@ nav a{color:var(--dim);text-decoration:none;transition:.2s}nav a:hover{color:#ff
 </div>
 </section>
 <section id="work">
-<div class="hd"><h2 class="rv"><span class="g">15</span> things I've built.</h2><p class="lead rv">Drag or swipe. Click any card to open the code.</p></div>
+<div class="hd"><h2 class="rv"><span class="g cnt">16</span> things I've built.</h2><p class="lead rv">Drag or swipe. Open any card for the method, the measured results and the limits.</p></div>
 <div class="track" id="track"></div>
 <div class="prog"><i id="prog"></i></div>
 </section>
@@ -107,11 +137,192 @@ nav a{color:var(--dim);text-decoration:none;transition:.2s}nav a:hover{color:#ff
 <div class="btns rv"><a class="btn p" href="mailto:jasperjensen8888@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/jasper-jensen-3709182b4/" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/JazzyJJ0601" target="_blank" rel="noopener">GitHub</a></div>
 </section>
 </main>
+<dialog id="d" aria-labelledby="dt"><button type="button" class="x" id="dx" aria-label="Close">×</button><div class="dl" id="db"></div></dialog>
 <footer>© Jasper Jensen</footer>
 <script>
-const C=[{"url": "https://github.com/JazzyJJ0601/precision-escalation", "tags": "Quantization \u00b7 Offloading", "title": "Spend precision only where it's needed", "desc": "A 3-bit model answers every token; when its own entropy says it is unsure, that token is escalated to higher precision, whose extra bits can live in RAM or on NVMe.", "repo": "precision-escalation", "m": "Qwen3-8B, 22.5% of tokens escalated to bf16: 14.17 ppl vs 15.01 escalating at random (3-bit alone 16.44)."}, {"url": "https://github.com/JazzyJJ0601/attention-offload", "tags": "Inference \u00b7 Memory", "title": "Long context on consumer hardware", "desc": "Exact long-context decoding past the GPU's memory: the GPU attends to the first 16k tokens while the CPU attends to the rest at the same time, merged exactly by log-sum-exp.", "repo": "attention-offload", "m": "Qwen3-8B at 48k tokens: GPU-only runs out of memory; split 215 ms/token vs 294 CPU attention, 2,201 fetching the cache; same tokens."}, {"url": "https://github.com/JazzyJJ0601/adaptive-kv-cache", "tags": "KV cache \u00b7 LLMs", "title": "Give each attention head its own bits", "desc": "Every KV head gets its own bit-width; a loss-calibrated score decides which heads earn the extra bits under a fixed cache budget.", "repo": "adaptive-kv-cache", "m": "Qwen3-8B, 3.5-bit KV cache: 18.8 ppl vs 54.7 for random heads, and beats uniform 4-bit (19.85) with 12% less cache."}, {"url": "https://github.com/JazzyJJ0601/block-quant", "tags": "Quantization \u00b7 Optimisation", "title": "4-bit weights that barely notice", "desc": "Each 64-weight block picks its own clipping scale, weighted by how strongly the layer's inputs use those weights. Same storage as plain block quantisation.", "repo": "block-quant", "m": "Qwen3-8B, all layers 4-bit: 12.26 ppl vs 12.03 FP16 and 16.45 for standard rounding."}, {"url": "https://github.com/JazzyJJ0601/activation-aware-quant", "tags": "Quantization \u00b7 Calibration", "title": "Protect the busy channels", "desc": "Scales each weight column by how strongly its input fires before rounding, so the channels the model leans on get finer steps. Same size as plain 3- or 4-bit.", "repo": "activation-aware-quant", "m": "Qwen3-8B 3-bit: 14.48 ppl vs 17.47 plain rounding; 4-bit: 12.51 vs 12.92 (bf16 12.03)."}, {"url": "https://github.com/JazzyJJ0601/multi-level-quant", "tags": "Quantization \u00b7 Compression", "title": "Spend the extra bit wisely", "desc": "Every layer gets 3 or 4 bits; a calibrated sensitivity score decides which layers earn the 4th bit under a fixed memory budget.", "repo": "multi-level-quant", "m": "Qwen3-8B at 3.5 bits/weight: 13.64 ppl vs 15.38 for random layer choice (3-bit 17.47, 4-bit 12.92)."}, {"url": "https://github.com/JazzyJJ0601/prompt-compress", "tags": "Information theory \u00b7 Prompts", "title": "Shorter prompts, same meaning", "desc": "Keeps the recent text plus the older 16-token spans the model found most surprising. Scores come from one forward pass; no training.", "repo": "prompt-compress", "m": "Qwen3-8B, half the prompt kept: 9.09 ppl vs 9.76 keep-recent vs 8.51 full prompt."}, {"url": "https://github.com/JazzyJJ0601/speculative-decoding", "tags": "Inference speed", "title": "Speculative decoding", "desc": "Guesses the next 8 tokens from earlier text and checks them all in one pass of the full model. No draft model, identical output.", "repo": "speculative-decoding", "m": "Qwen3-8B: 3.3x faster on code edits, 1.9x on quoting, 1.2x on free text."}, {"url": "https://github.com/JazzyJJ0601/streaming-attention", "tags": "Attention \u00b7 Long context", "title": "Do summaries of forgotten tokens help? No.", "desc": "A bounded KV cache that keeps mean-pooled summaries of evicted tokens, tested against StreamingLLM's attention sinks. Three versions, settings chosen on held-out train text.", "repo": "streaming-attention", "m": "Negative result on Qwen3-8B: best 11.49 ppl vs sinks 11.36 at 256 entries (10.10 vs 10.07 at 512). Diagnosis in the repo."}, {"url": "https://github.com/JazzyJJ0601/entropy-driven-token-dropping", "tags": "KV cache \u00b7 Eviction", "title": "Which tokens to keep", "desc": "When the KV cache must shrink, keep the tokens that focused queries looked at. Diffuse attention counts little and sharp retrieval counts a lot.", "repo": "entropy-driven-token-dropping", "m": "Qwen3-8B, 200 held-out passages, quarter of the cache kept: 11.33 ppl vs 11.70 for H2O (full cache 9.35)."}, {"url": "https://github.com/JazzyJJ0601/predictive-swap", "tags": "Systems \u00b7 Transformers", "title": "Fetch the right pages a layer early", "desc": "When the KV cache lives in CPU memory, each layer's query is predicted from the layer before, so the pages it needs can be copied to the GPU while the previous layer runs.", "repo": "predictive-swap", "m": "Qwen3-8B, 512-token GPU budget: 8.89 ppl vs 9.99 sinks; the late oracle choice gets 8.88 (full 8.72)."}, {"url": "https://github.com/JazzyJJ0601/multi-tower-moe", "tags": "Architecture \u00b7 MoE", "title": "Turn a dense model into experts", "desc": "Splits every FFN into towers of neurons that fire together, then routes each token with the layer's own weights in a low-rank subspace. No training.", "repo": "multi-tower-moe", "m": "Qwen3-8B, half the FFN per token: 23.4 ppl vs 33.0 static pruning and 51.0 random towers (dense 12.0)."}, {"url": "https://github.com/JazzyJJ0601/conformal-drift", "tags": "Statistics \u00b7 Reliability", "title": "Know when the data shifts", "desc": "Adaptive Conformal Inference for uncertainty quantification and drift detection under distribution shift.", "repo": "conformal-drift"}, {"url": "https://github.com/JazzyJJ0601/t-digest", "tags": "Maths \u00b7 Neural nets", "title": "Adaptive Fourier features", "desc": "Learns which sinusoidal frequencies matter for a regression task, beating spectral bias in plain MLPs.", "repo": "t-digest"}, {"url": "https://github.com/JazzyJJ0601/tinygrad-gpt", "tags": "Deep learning \u00b7 Fundamentals", "title": "A GPT from first principles", "desc": "A decoder-only transformer written in tinygrad to understand every moving part.", "repo": "tinygrad-gpt"}];
+const G="https://github.com/JazzyJJ0601/";
+const C=[
+{repo:"precision-escalation",tags:"Quantization · Offloading",title:"Spend precision only where it's needed",
+desc:"A 3-bit model answers every token; when its own entropy says it is unsure, that token is escalated to higher precision, whose extra bits can live in RAM or on NVMe.",
+m:"Qwen3-8B, 22.5% of tokens escalated to bf16: 14.17 ppl vs 15.01 escalating at random (3-bit alone 16.44).",
+what:"A small 3-bit copy of the model answers every token. When it is unsure, measured by the entropy of its own prediction, that token is handed to a higher-precision copy instead. The idea for consumer GPUs: keep the small model in video memory and fetch the extra bits from RAM or NVMe only for those tokens.",
+how:"All 252 decoder layers of Qwen3-8B are rounded to 3 bits (one scale per 128 weights). The entropy threshold for each share is set on separate dev text and applied unchanged to the test text. The random baseline escalates exactly the same share of tokens (mean of 5 draws).",
+th:["Tokens escalated to bf16","Entropy gate","Random"],
+tr:[["0%","16.44","16.44"],["6.3%","15.59","16.06"],["13.8%","14.86","15.58"],["22.5%","14.17","15.01"],["42.7%","12.90","13.94"],["100%","11.20","11.20"]],me:[3],
+tn:"Perplexity on WikiText-2, 15,330 test tokens. Lower is better.",
+lim:["No speed or memory numbers yet: the fetch pipeline isn't built.","Escalating 42.7% to 4-bit is still worse than just running the 4-bit model (13.61 vs 12.08).","A 2-bit base failed: the model is too broken for its uncertainty to mean anything.","One model, one dataset."],
+plain:"A cheap model can tell, fairly reliably, when it's about to get something wrong. Sending only those moments to the expensive model fixes far more mistakes than sending the same number at random. It's a building block for running big models on small machines, not yet a faster system."},
+
+{repo:"attention-offload",tags:"Inference · Memory",title:"Long context on consumer hardware",
+desc:"Exact long-context decoding past the GPU's memory: the GPU attends to the first 16k tokens while the CPU attends to the rest at the same time, merged exactly by log-sum-exp.",
+m:"Qwen3-8B at 48k tokens: GPU-only runs out of memory; split 215 ms/token vs 294 CPU attention, 2,201 fetching the cache; same tokens.",
+what:"Lets an 8B model keep reading a prompt that is too long for one 24 GB graphics card, without dropping or approximating anything.",
+how:"The first 16,384 tokens of every layer's cache stay on the GPU; the rest sit in CPU memory. On each step the GPU and the CPU attend to their own part at the same time, and the two results are combined exactly with their log-sum-exp. Only the query goes over and a small output comes back.",
+th:["Prompt (tokens)","GPU only","Copy cache to GPU","CPU attention","Split (mine)"],
+tr:[["8,192","25.9","371.3","74.7","25.9"],["16,384","27.4","739.1","123.5","32.0"],["32,768","30.4","1,469.1","293.7","129.7"],["49,152","out of memory","2,200.5","294.2","215.3"]],me:[3],
+tn:"Milliseconds per generated token on one RTX 3090 Ti, Qwen3-8B bf16. Lower is better. Every offloaded run produced the same 32 tokens as its reference.",
+lim:["While the whole cache still fits (32k), plain GPU is faster: 30.4 vs 129.7 ms.","One prompt at a time, greedy decoding; prefill isn't optimised.","CPU attention timed almost the same at 32k and 48k, which isn't explained yet."],
+plain:"Normally, when a document gets too long for the graphics card, the model crashes or slows to a crawl. This splits the reading between the graphics card and the main processor, so a 49,000-token prompt still runs at about 4.6 tokens a second on one gaming GPU, with exactly the same answer."},
+
+{repo:"adaptive-kv-cache",tags:"KV cache · LLMs",title:"Give each attention head its own bits",
+desc:"Every KV head gets its own bit-width; a loss-calibrated score decides which heads earn the extra bits under a fixed cache budget.",
+m:"Qwen3-8B, 3.5-bit KV cache: 18.8 ppl vs 43–55 for random heads, and beats uniform 4-bit (19.85) with 12% less cache.",
+what:"The memory a model uses to hold the text so far (the KV cache) can be stored in fewer bits. This gives each of Qwen3-8B's 576 cache parts (layer × head × key or value) its own number of bits under a fixed total budget.",
+how:"Measure how much each part's rounding error hurts, rescaled by each layer's real rise in loss on training text. Then start everything at 2 bits and hand out upgrades greedily where they buy the most.",
+th:["Allocation (simple quantiser)","Avg bits","Perplexity"],
+tr:[["Uniform 3-bit","3.0","333"],["Calibrated (mine)","3.0","28.3"],["Random heads, mean of 3","3.5","43.0 – 54.7"],["Variance heuristic","3.5","41.9"],["Calibrated (mine)","3.5","18.8"],["Uniform 4-bit","4.0","19.85"]],me:[1,4],
+tn:"WikiText-2 test, 40 × 512 tokens; full bf16 cache 12.03. With a stronger quantiser (KIVI-style keys) everything is near bf16 and the gain shrinks: 12.10 at 3.5 bits vs 12.18 for random heads.",
+lim:["Simulated rounding: no packed kernel, so no speed numbers, and cache size is computed.","512-token windows only.","The first version lost to random heads; measuring each layer's real loss fixed it."],
+plain:"You can store a model's working memory in fewer bits, but some parts are far more sensitive than others. Measuring which ones matter and giving them the spare bits makes a 3.5-bit cache work better than a uniform 4-bit one that's 12% bigger."},
+
+{repo:"block-quant",tags:"Quantization · Optimisation",title:"4-bit weights that barely notice",
+desc:"Each 64-weight block picks its own clipping scale, weighted by how strongly the layer's inputs use those weights. Same storage as plain block quantisation.",
+m:"Qwen3-8B, all layers 4-bit: 12.26 ppl vs 12.03 FP16 and 16.45 for standard rounding.",
+what:"Rounds every weight in Qwen3-8B to 4 bits, in blocks of 64, where each block chooses its own clipping scale.",
+how:"Each block tries 20 clipping ratios and keeps the one with the lowest error, where each weight's error is weighted by how strongly its input fires on calibration text. The stored format is identical to plain block quantisation; only the chosen scales differ.",
+th:["Method (4-bit, all 252 layers)","Perplexity"],
+tr:[["No quantisation (FP16)","12.03"],["Per-channel round-to-nearest","16.45"],["Block absmax","12.61"],["Block, plain weight-error search","12.66"],["Block, activation-weighted (mine)","12.26"]],me:[4],
+tn:"WikiText-2 test, 20,480 tokens. Lower is better.",
+lim:["Simulated rounding: memory and speed of a packed 4-bit kernel are not measured.","One seed: differences of a few hundredths are noise; these gaps are not.","Weighting by activations is the insight behind AWQ and GPTQ, applied here to the clipping choice."],
+plain:"Shrinking a model to 4 bits usually costs some quality. Choosing each block's rounding by what the model actually uses cuts that cost by about 60% compared with the plain block method, and it's free at run time."},
+
+{repo:"activation-aware-quant",tags:"Quantization · Calibration",title:"Protect the busy channels",
+desc:"Scales each weight column by how strongly its input fires before rounding, so the channels the model leans on get finer steps. Same size as plain 3- or 4-bit.",
+m:"Qwen3-8B 3-bit: 14.48 ppl vs 17.47 plain rounding; 4-bit: 12.51 vs 12.92 (bf16 12.03).",
+what:"Low-bit weights that protect the input channels carrying the largest signals, at no extra storage.",
+how:"Before rounding, each input channel's weights are scaled up by rms(x)^α and scaled back afterwards, so busy channels get finer steps. α is searched per layer against an activation-weighted error; α = 0 is plain rounding. This is the core of AWQ (Lin et al., 2024) with a cheaper search.",
+th:["Bits","Packed size","Plain rounding","Activation-aware"],
+tr:[["4","6.18 GB","12.92","12.51"],["3","5.31 GB","17.47","14.48"]],me:[],
+tn:"Perplexity, WikiText-2 test. The bf16 model is 16.38 GB at 12.03.",
+lim:["Simulated rounding; packed sizes are computed. No speed numbers.","Compared with plain rounding in the same format, not with the official AWQ or GPTQ code.","One model, one dataset."],
+plain:"The 3-bit model is about a third of the original size. This trick removes over half of the quality it loses (55%), without making it any bigger."},
+
+{repo:"multi-level-quant",tags:"Quantization · Compression",title:"Spend the extra bit wisely",
+desc:"Every layer gets 3 or 4 bits; a calibrated sensitivity score decides which layers earn the 4th bit under a fixed memory budget.",
+m:"Qwen3-8B at 3.5 bits/weight: 13.64 ppl vs 15.38 for random layer choice (3-bit 17.47, 4-bit 12.92).",
+what:"Mixed 3/4-bit weights: each layer gets 3 or 4 bits, and a score decides which layers earn the 4th bit under a fixed size.",
+how:"For every layer, measure how much error the 4th bit removes, weighted by real activations on calibration text. Give 4 bits to the highest-scoring layers until the budget is spent; the rest get 3.",
+th:["Config","Size","Perplexity"],
+tr:[["bf16","16.4 GB","12.03"],["Uniform 4-bit","6.18 GB","12.92"],["Mine, half the weights at 4-bit","5.75 GB","13.64"],["Random layers, same size (mean of 3)","5.75 GB","15.38"],["Uniform 3-bit","5.31 GB","17.47"]],me:[2],
+tn:"Qwen3-8B, WikiText-2 test, 40 × 512 tokens. It beat every random seed at both budgets tested.",
+lim:["Simulated rounding: no packed 3/4-bit kernel, so no speed numbers.","Plain rounding underneath; whether the gain holds on top of GPTQ or AWQ isn't tested.","One model, one dataset."],
+plain:"Not every layer needs the same precision. Picking the right half to keep at 4 bits gets 84% of the way from 3-bit to 4-bit quality for half the extra memory."},
+
+{repo:"prompt-compress",tags:"Information theory · Prompts",title:"Shorter prompts, same meaning",
+desc:"Keeps the recent text plus the older 16-token spans the model found most surprising. Scores come from one forward pass; no training.",
+m:"Qwen3-8B, half the prompt kept: 9.09 ppl vs 9.76 keep-recent vs 8.51 full prompt.",
+what:"Cuts a long prompt down while keeping what the model needs to carry on from it.",
+how:"One forward pass gives each token's surprisal. Keep the recent text plus the older 16-token spans with the highest average surprisal. The recent/older split was chosen on 20 separate dev passages, then scored on 40 test passages.",
+th:["What the model sees","50% kept","25% kept"],
+tr:[["Whole prompt","8.51","8.51"],["Random tokens","13.34","19.66"],["Most surprising single tokens","12.30","17.06"],["Most recent text only","9.76","11.19"],["Recent + surprising spans (mine)","9.09","10.42"]],me:[4],
+tn:"Perplexity on the 64 tokens after a 384-token prompt, Qwen3-8B, WikiText-2. Lower is better.",
+lim:["Perplexity is a proxy; question answering over long documents isn't tested yet.","One model, one seed, 40 test passages.","The first version had three bugs (described in the repo) and its result was withdrawn."],
+plain:"Long prompts are slow and costly. Keeping the latest text plus the older passages full of names, numbers and new facts loses much less than simply cutting off the start."},
+
+{repo:"speculative-decoding",tags:"Inference speed",title:"Speculative decoding",
+desc:"Guesses the next 8 tokens from earlier text and checks them all in one pass of the full model. No draft model, identical output.",
+m:"Qwen3-8B: 3.3x faster on code edits, 1.9x on quoting, 1.2x on free text.",
+what:"Makes the model write faster with the same output, without needing a second, smaller draft model.",
+how:"Guess the next 8 tokens by finding the last few tokens earlier in the text (prompt lookup). The full model checks all 8 in one pass, keeps the run it agrees with and adds one token of its own. Rejected guesses are cropped from the cache.",
+th:["Task","Plain (tok/s)","Speculative (tok/s)","Speedup"],
+tr:[["Add type hints to code","41.5","137.2","3.31×"],["Copy part of a passage","41.4","79.8","1.93×"],["Continue text freely","41.4","48.4","1.17×"]],me:[],
+tn:"Qwen3-8B bf16, one RTX 3090 Ti, 200 new tokens per task.",
+lim:["Prompt lookup is a known idea (Saxena, 2023); this is a clean implementation measured on an 8B model.","Greedy decoding only, batch size 1, one run per task.","The copy task diverged after 82 tokens on an exact tie between two words (35.0 vs 35.0), explained in the repo."],
+plain:"When the answer repeats a lot of the question, as in editing code, the model can confirm several words at once instead of one at a time. Up to 3.3 times faster, with the same answer."},
+
+{repo:"streaming-attention",tags:"Attention · Long context",title:"Do summaries of forgotten tokens help? No.",
+desc:"A bounded KV cache that keeps mean-pooled summaries of evicted tokens, tested against StreamingLLM's attention sinks. Three versions, settings chosen on held-out train text.",
+m:"Negative result on Qwen3-8B: best 11.49 ppl vs sinks 11.36 at 256 entries (10.10 vs 10.07 at 512). Diagnosis in the repo.",
+what:"A fixed-size memory for long text. The question: does keeping averaged summaries of the text that falls out of memory beat simply keeping the first few tokens plus a recent window (StreamingLLM)?",
+how:"Old tokens are pooled into blocks that merge like a binary counter, so only a few summary slots exist at once. Three versions; every setting was chosen on training text and scored once on test.",
+th:["Method","256 entries","512 entries"],
+tr:[["Full attention (4,096 tokens)","8.72","8.72"],["Recent window only","26.58","19.40"],["StreamingLLM sinks + window","11.36","10.07"],["Mine, best version (v3)","11.49","10.10"]],me:[3],
+tn:"Perplexity, 16 WikiText-2 documents of 4,096 tokens, Qwen3-8B. Lower is better.",
+lim:["A negative result: it came within 0.2–1% but never won, on either budget, on train or test.","One model, one dataset."],
+plain:"No. Averages of old text are too blurry to help; the model gets almost everything it needs from the first few tokens and the most recent ones. Keeping specific old tokens works instead, which is what predictive-swap does."},
+
+{repo:"entropy-driven-token-dropping",tags:"KV cache · Eviction",title:"Which tokens to keep",
+desc:"When the KV cache must shrink, keep the tokens that focused queries looked at. Diffuse attention counts little and sharp retrieval counts a lot.",
+m:"Qwen3-8B, 200 held-out passages, quarter of the cache kept: 11.33 ppl vs 11.70 for H2O (full cache 9.35).",
+what:"When a model's memory has to shrink, decide which old tokens to keep.",
+how:"Like the standard method (H2O), score each token by the attention it receives, but weight each query by how focused it is: one minus its attention entropy, normalised. Real cache eviction on Qwen3-8B.",
+th:["Cache kept","Full","Recent only","H2O","Mine"],
+tr:[["50%","9.35","10.30","10.20","10.01"],["25%","9.35","11.51","11.70","11.33"]],me:[],
+tn:"Perplexity on the next 64 tokens, 200 held-out WikiText-2 passages. Better than H2O on 124/200 and 129/200 passages.",
+lim:["Against just keeping recent text it wins on average at 50%, but at 25% the difference isn't significant.","One-shot eviction after the prompt, not during long generation.","One model, 512-token contexts."],
+plain:"Paying more attention to the moments when the model is clearly looking something up gives a better guess at what to remember. It clearly beats the standard method, and only narrowly beats just keeping the latest text."},
+
+{repo:"predictive-swap",tags:"Systems · Transformers",title:"Fetch the right pages a layer early",
+desc:"When the KV cache lives in CPU memory, each layer's query is predicted from the layer before, so the pages it needs can be copied to the GPU while the previous layer runs.",
+m:"Qwen3-8B, 512-token GPU budget: 8.89 ppl vs 9.99 sinks; the late oracle choice gets 8.88 (full 8.72).",
+what:"When a long model memory lives in CPU memory, predict which pages each layer will need one layer early, so copying them to the GPU can overlap with useful work.",
+how:"Apply layer l's own query projection to the input of layer l−1, then score pages against that predicted query (Quest-style min/max scores). Compared with the same scores from the real query, which only exist once the layer runs.",
+th:["Policy","512 entries","1,024 entries"],
+tr:[["Full attention (4,096 tokens)","8.72","8.72"],["StreamingLLM sinks","9.99","9.22"],["Previous layer's pages","9.20","8.88"],["Predicted one layer early (mine)","8.89","8.74"],["Oracle (real query, too late)","8.88","8.74"]],me:[3],
+tn:"Perplexity, 16 WikiText-2 documents of 4,096 tokens, Qwen3-8B. Lower is better.",
+lim:["Measures which pages to fetch, not speed: there is no real copy kernel here.","One model, one dataset."],
+plain:"Looking at only an eighth of a long document, chosen one step ahead, the model does almost as well as reading all of it. That's the prediction you need to stream memory from cheap RAM without waiting for it."},
+
+{repo:"multi-tower-moe",tags:"Architecture · MoE",title:"Turn a dense model into experts",
+desc:"Splits every FFN into towers of neurons that fire together, then routes each token with the layer's own weights in a low-rank subspace. No training.",
+m:"Qwen3-8B, half the FFN per token: 23.4 ppl vs 33.0 static pruning and 51.0 random towers (dense 12.0).",
+what:"Turns each of Qwen3-8B's 36 feed-forward layers into 64 expert 'towers' without any training, so each token only needs the towers a router picks.",
+how:"Neurons that fire together are clustered into the same tower. The router is the layer's own weights restricted to the 256 main directions of its input, so it predicts each neuron's output cheaply with nothing learned. Calibration takes 49 seconds.",
+th:["Method","50% of neurons","25% of neurons"],
+tr:[["Dense model","12.03","12.03"],["Static pruning","33.04","353.0"],["Random towers, same router","51.01","2,098"],["Usual centroid router","170.2","39,098"],["Clustered towers + low-rank router (mine)","23.42","125.5"]],me:[4],
+tn:"Perplexity, WikiText-2 test, 40 × 512 tokens. Lower is better.",
+lim:["Quality only: no sparse kernel, so no speed numbers.","At 25% every training-free method falls apart; 125.5 isn't usable.","Picking single neurons with the same predictor does better (18.93) than picking towers."],
+plain:"You can make an existing model skip half of its biggest layers for each word without retraining, and it degrades far less than the usual shortcuts. It's still clearly worse than the full model (23.4 vs 12.0), and the speed-up isn't measured yet."},
+
+{repo:"conformal-drift",tags:"Statistics · Reliability",title:"Error bars that survive drift",
+desc:"Adaptive Conformal Inference from scratch in NumPy: prediction intervals that adjust after every point, so they keep their promised coverage when the data drifts.",
+m:"5 seeds, target 90%: ACI covers 89.9% vs 74.7% for split conformal; the price is wider intervals.",
+what:"Prediction intervals that keep their promise, say 90% coverage, while the data drifts. A from-scratch implementation of Adaptive Conformal Inference (Gibbs & Candès, 2021).",
+how:"After every point, ACI nudges its miss rate: a miss widens the next interval, a hit narrows it slightly. Compared with ordinary split conformal on a 5,000-point stream whose mean rises steadily.",
+th:["Method","Coverage","Median width","Infinite intervals"],
+tr:[["Split conformal","74.7%","3.78","0"],["ACI (mine)","89.9%","5.22","9.6% of steps"]],me:[1],
+tn:"Target 90%, mean of 5 seeds, 3,500 scored points each.",
+lim:["Synthetic data with one simple drift (a linear trend).","The point prediction is held constant on purpose; with a model that tracks the trend the intervals would be far narrower.","ACI guarantees long-run average coverage, not coverage in every window."],
+plain:"A forecast that says '90% sure it's in this range' is only useful if that's true. When things shift, the usual method quietly drops to 75%. This one notices its misses and widens the range to keep its promise."},
+
+{repo:"t-digest",tags:"Algorithms · Streaming",title:"Percentiles of a huge stream in 119 numbers",
+desc:"The merging t-digest (Dunning & Ertl, 2019) from scratch: accurate p50, p99 and p99.9 of a stream from a tiny summary that keeps its detail in the tails.",
+m:"100k points: 58–534 ppm rank error from 119 stored numbers, vs 3,114–50,018 ppm for a random sample of the same size.",
+what:"Accurate percentiles of a huge stream (p50, p99, p99.9 latency and the like) from a summary of about 60 centroids.",
+how:"Keep a sorted list of centroids (a mean and a count). A scale function lets centroids near the median hold thousands of points and those near the tails only a few, so the tails stay sharp. New points are buffered and merged in order; two digests merge the same way.",
+th:["Method","Numbers stored","p1","p50","p99","p99.9"],
+tr:[["t-digest (mine)","119","104","534","504","312"],["First version of this repo","6,589","618","638","350","260"],["Random sample, same memory","119","11,368","50,018","4,134","3,114"]],me:[0],
+tn:"Rank error in parts per million (100 ppm = 0.01%), 100,000 lognormal points, mean of 5 seeds. Lower is better.",
+lim:["The p99.9 estimate is 0.04% off in rank but 13% off in value, because only 100 points lie beyond it.","Points are added in pure Python: fine for millions, not billions."],
+plain:"To know your slowest 1% of response times you'd normally keep every measurement. This keeps 119 numbers and stays within a few hundredths of a percent: 10 to 270 times closer than a random sample of the same size."},
+
+{repo:"tinygrad-gpt",tags:"Deep learning · Fundamentals",title:"A GPT and its autodiff, from scratch",
+desc:"A ~700-line NumPy autodiff engine with a small character-level GPT on top, every gradient checked against finite differences.",
+m:"Test 2.325 nats/char vs 2.558 for a bigram model (108k parameters, 45 s on a CPU).",
+what:"A small GPT and the autodiff engine under it, written from scratch in NumPy so every gradient can be read and checked. Its own engine, not the tinygrad library.",
+how:"Reverse-mode autodiff, layer norm, causal attention, AdamW. A character-level model is trained on the opening of Pride and Prejudice, split 80/10/10, keeping the checkpoint with the best validation loss.",
+th:["Model","Test loss (nats/char)"],
+tr:[["Uniform over 73 characters","4.290"],["Unigram","3.048"],["Bigram","2.558"],["This GPT (108k parameters)","2.325"]],me:[3],
+tn:"Held-out test 10%, lower is better.",
+lim:["Single-head attention and no position embeddings.","Tiny data, CPU, float64: built for understanding, not for real use. It overfits after about 800 steps."],
+plain:"Built to understand every moving part. A full gradient check found four real bugs in my first version; with them fixed, the model learns more than which letter usually follows which."}
+];
 const t=document.getElementById('track');
-t.innerHTML=C.map((c,i)=>`<a class="card" href="${c.url}" target="_blank" rel="noopener"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="tags">${c.tags}</span><h3>${c.title}</h3><p>${c.desc}</p>${c.m?`<span class="m">${c.m}</span>`:''}<code>${c.repo} →</code></a>`).join('');
+t.innerHTML=C.map((c,i)=>`<button type="button" class="card" aria-haspopup="dialog" data-i="${i}"><span class="n" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="tags">${c.tags}</span><h3>${c.title}</h3><p>${c.desc}</p><span class="m">${c.m}</span><span class="more">Full results <b aria-hidden="true">+</b></span></button>`).join('');
+document.querySelectorAll('.cnt').forEach(e=>e.textContent=C.length);
+const dg=document.getElementById('d'),db=document.getElementById('db');let opener=null;
+function openCard(i){const c=C[i];opener=t.querySelector(`[data-i="${i}"]`);
+db.innerHTML=`<span class="tags">${c.tags}</span><h3 id="dt">${c.title}</h3>
+<h4>What it is</h4><p>${c.what}</p><h4>How it works</h4><p>${c.how}</p>
+<h4>Results</h4><div class="tw" tabindex="0" role="region" aria-label="Results table"><table><thead><tr>${c.th.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${c.tr.map((r,j)=>`<tr${c.me.includes(j)?' class="me"':''}>${r.map((v,k)=>k?`<td>${v}</td>`:`<th scope="row">${v}</th>`).join('')}</tr>`).join('')}</tbody></table></div><p class="tn">${c.tn}</p>
+<h4>Honest limits</h4><ul>${c.lim.map(l=>`<li>${l}</li>`).join('')}</ul>
+<div class="plain"><h4>What this means</h4><p>${c.plain}</p></div>
+<a class="btn p gh" href="${G}${c.repo}" target="_blank" rel="noopener">Code and full results on GitHub ↗</a>`;
+dg.showModal();dg.querySelector('.dl').scrollTop=0;document.documentElement.classList.add('lock')}
+t.addEventListener('click',e=>{const k=e.target.closest('.card');if(k&&!mv)openCard(+k.dataset.i)});
+document.getElementById('dx').addEventListener('click',()=>dg.close());
+dg.addEventListener('click',e=>{if(e.target===dg)dg.close()});
+dg.addEventListener('close',()=>{document.documentElement.classList.remove('lock');if(opener)opener.focus()});
 t.addEventListener('mousemove',e=>{const k=e.target.closest('.card');if(k){const r=k.getBoundingClientRect();k.style.setProperty('--x',e.clientX-r.left+'px');k.style.setProperty('--y',e.clientY-r.top+'px')}});
 let d=0,mv=0,sx=0,sl=0;t.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;d=1;mv=0;sx=e.clientX;sl=t.scrollLeft;t.classList.add('drag')});addEventListener('pointermove',e=>{if(!d)return;let dx=e.clientX-sx;if(Math.abs(dx)>4)mv=1;t.scrollLeft=sl-dx;e.preventDefault()});addEventListener('pointerup',()=>{if(d){d=0;t.classList.remove('drag')}});t.addEventListener('dragstart',e=>e.preventDefault());t.addEventListener('click',e=>{if(mv){e.preventDefault();e.stopPropagation();mv=0}},true);
 t.addEventListener('scroll',()=>{document.getElementById('prog').style.width=100*t.scrollLeft/(t.scrollWidth-t.clientWidth)+'%'});
