@@ -142,6 +142,17 @@ dialog#d::backdrop{background:#05060acc;backdrop-filter:blur(6px)}
 <script>
 const G="https://github.com/JazzyJJ0601/";
 const C=[
+{repo:"autolab",tags:"Agents · Research automation",title:"A research agent that can't lie about its numbers",
+desc:"A local Qwen3-8B reads papers, writes hypotheses, writes and runs real GPU experiments, and writes the report; code, not the model, decides which numbers are allowed in it. Early-stage.",
+m:"10 failed runs kept and each failure turned into a check; the first question (4-bit group size) now runs end to end with every claim verified.",
+what:"Small local models will happily invent a number, file a result under the wrong name, or call 6.07 GB \"within\" a 5.96 GB budget. autolab gives one the full research loop on one GPU, with no cloud model anywhere, and builds the checks around it so those mistakes get caught instead of published.",
+how:"Experiments can only touch the model through a harness that records what was actually measured (bits, group size, a hash of the quantisation plan). The results table is built from those records, and a claims check rejects any number in the report that isn't in the log of the experiment it cites. Failures go back to the agent with its own script and error.",
+th:["Qwen3-8B weights","Perplexity","Size"],
+tr:[["bf16 (original)","14.97","16.38 GB"],["4-bit, group 128","15.98","6.18 GB"],["3-bit, group 32","17.95","5.96 GB"],["Agent's mix: top-20 linears 4-bit, rest 3-bit g128","18.83","5.42 GB"],["3-bit, group 128","21.78","5.31 GB"]],me:[3],
+tn:"Measured by the agent's own experiments. WikiText-2, 16 windows of 512 tokens (a quick estimate). Every number is in the repo's run logs.",
+lim:["On the harder bit-budget question it still mislabels results and stops early; the checks catch it, but it hasn't produced a clean answer yet.","Paper summaries aren't checked the way numbers are: one report credits a retrieval paper with a quantisation claim.","A cancer cell-line harness (DepMap, held-out validation) is built and unit-tested but not yet used."],
+plain:"An AI that runs its own experiments is only useful if you can trust what it reports. This one isn't trusted at all: every number it writes is checked against what the experiment really measured, and every way it went wrong is kept in the repo."},
+
 {repo:"conformal-early-exit",tags:"Inference · Conformal prediction",title:"Early exit that keeps its promise under shift",
 desc:"Let a model stop at a middle layer when it is sure, with an error target that still holds when the text changes: the threshold is steered online by random self-audits.",
 m:"Qwen3-8B, 5% target: calibrated-once thresholds made 19.1% errors on unseen code; the online threshold held 5.0% on every stream.",
