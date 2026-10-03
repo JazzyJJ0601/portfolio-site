@@ -142,6 +142,17 @@ dialog#d::backdrop{background:#05060acc;backdrop-filter:blur(6px)}
 <script>
 const G="https://github.com/JazzyJJ0601/";
 const C=[
+{repo:"conformal-early-exit",tags:"Inference · Conformal prediction",title:"Early exit that keeps its promise under shift",
+desc:"Let a model stop at a middle layer when it is sure, with an error target that still holds when the text changes: the threshold is steered online by random self-audits.",
+m:"Qwen3-8B, 5% target: calibrated-once thresholds made 19.1% errors on unseen code; the online threshold held 5.0% on every stream.",
+what:"An 8B model runs 36 layers for every word, even easy ones. Early exit stops partway when the model is already sure. The catch is choosing \"sure enough\": a threshold tuned once on one kind of text can quietly break on another.",
+how:"A tuned lens (one small trained translator per layer) lets layers 20 and 24 predict the final answer, and a 4,096-weight gate decides when to stop without paying for the 622M-weight output layer. 5% of tokens also run the full model at random; whether the early answer would have been wrong nudges the threshold up or down (adaptive conformal inference). Because the audits are random, the error rate is held at the target whatever the data does.",
+th:["Method (5% target)","Wikipedia error","Python code error","Alternating error"],
+tr:[["Fixed threshold 0.9","5.4%","20.2%","11.3%"],["Calibrated once (Learn-then-Test)","4.8%","19.1%","10.5%"],["Online + audits (mine)","5.0%","5.0%","5.2%"],["Best fixed threshold in hindsight","4.8%","4.4%","4.7%"]],me:[2],
+tn:"Share of tokens differing from the full Qwen3-8B, 12 documents of 2,048 tokens per stream; calibration on 12 other Wikipedia documents. Online: mean of 5 audit seeds.",
+lim:["Compute saved is modest: 7.3% in-domain, 1.8–4.1% under the shift (the lens and gate were trained on Wikipedia only).","Teacher-forced and counted in weights read, not timed; the keys and values that skipped layers would need in real generation are not handled.","The guarantee is long-run: single documents reached 7.8–12.5% at the 5% target."],
+plain:"Shortcuts that are tuned once go wrong when the job changes: here, four times more mistakes than promised. Spot-checking 1 word in 20 against the full model and adjusting as it goes keeps the mistakes at exactly the level you asked for, on any text."},
+
 {repo:"precision-escalation",tags:"Quantization · Offloading",title:"Spend precision only where it's needed",
 desc:"A 3-bit model answers every token; when its own entropy says it is unsure, that token is escalated to higher precision, whose extra bits can live in RAM or on NVMe.",
 m:"Qwen3-8B, 22.5% of tokens escalated to bf16: 14.17 ppl vs 15.01 escalating at random (3-bit alone 16.44).",
